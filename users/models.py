@@ -9,6 +9,9 @@ from .managers import CustomUserManager
 class CustomUser(AbstractUser):
     username = None
     email = models.EmailField(_("email address"), unique=True)
+    advisor_name = models.CharField("Advisor Name", max_length=256, blank=False)
+    advisor_phone_number = models.CharField("Advisor Phone Number", max_length=256, blank=False)
+
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
     objects = CustomUserManager()
