@@ -1,14 +1,14 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .forms import CustomUserCreationForm, CustomUserChangeForm
-from .models import CustomUser, School
+from .models import CustomUser #, School
 
-class SchoolAdmin(admin.ModelAdmin):
-    list_display = [
-            "school_name",
-            "district",
+# class SchoolAdmin(admin.ModelAdmin):
+#     list_display = [
+#             "school_name",
+#             "district",
 
-            ]
+#             ]
 
 class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
@@ -37,4 +37,4 @@ class CustomUserAdmin(UserAdmin):
 
 
 admin.site.register(CustomUser, CustomUserAdmin)
-admin.site.register(School, SchoolAdmin)
+# admin.site.register(School, SchoolAdmin)
