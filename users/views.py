@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .forms import CustomUserCreationForm, LoginForm
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def index(request):
@@ -29,7 +30,7 @@ def user_login(request):
             user = authenticate(request, username=email, password=password)
             if user:
                 login(request, user)
-                return redirect('home')
+                return redirect('dashboard')
     else:
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
@@ -39,3 +40,9 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect('login')
+
+
+
+@login_required(login_url="/login")
+def user_dashboard(request):
+    return render(request, 'dashboard.html')

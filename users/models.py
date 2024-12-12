@@ -19,7 +19,7 @@ from .managers import CustomUserManager
 class CustomUser(AbstractUser):
     username = None
     # school = models.ForeignKey(School, on_delete=models.CASCADE, blank=True)
-    email = models.EmailField(_("email address"), unique=True)
+    email = models.EmailField("email address", unique=True)
     advisor_name = models.CharField("Advisor Name", max_length=256, blank=False)
     advisor_phone_number = models.CharField("Advisor Phone Number", max_length=256, blank=False)
 
